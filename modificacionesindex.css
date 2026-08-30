@@ -1,0 +1,456 @@
+
+/* ======================================
+   VARIABLES
+   Colores y fuentes que usamos en todo
+   el sitio para mantener el mismo estilo.
+====================================== */
+
+:root {
+    --color-principal: #A0522D;
+    --color-secundario: #87A96B;
+    --color-fondo: #F5E6D3;
+    --color-acento: #D4A437;
+    --color-texto: #4B2E1F;
+    --color-blanco: #FFFFFF;
+
+    --fuente-titulo: 'Playfair Display', serif;
+    --fuente-texto: 'Inter', sans-serif;
+}
+
+
+/* ======================================
+   RESET
+   Sacamos los márgenes y espacios que
+   los navegadores agregan por defecto.
+   
+   Esto es importante para que todas las
+   páginas comiencen desde el mismo punto
+   y no queden elementos desalineados.
+====================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--fuente-texto);
+    background: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+}
+
+
+/* Evitamos que las imágenes generen
+   espacios extra y hacemos que sean
+   fáciles de adaptar al tamaño disponible. */
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* ======================================
+   CONTENEDOR
+   Mantiene el contenido centrado y evita
+   que quede demasiado pegado a los bordes.
+====================================== */
+
+.contenedor {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* ======================================
+   HEADER
+====================================== */
+
+.header {
+    width: 100%;
+    background: var(--color-fondo);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.header .contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo img {
+    width: 90px;
+}
+
+.menu ul {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.menu a {
+    color: var(--color-principal);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.menu a:hover {
+    color: var(--color-acento);
+}
+
+
+/* ======================================
+   HERO
+   Espacio principal de presentación.
+====================================== */
+
+.hero {
+    min-height: 100vh;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0.35)
+        ),
+        url("./imagenes/header3.jpeg");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    color: var(--color-blanco);
+
+    /* Como el header es fixed, dejamos
+       espacio arriba para que no tape
+       el contenido de la página. */
+    padding: 100px 20px 60px;
+}
+
+.hero-contenido {
+    width: 80%;
+    max-width: 700px;
+}
+
+.hero h1 {
+    font-family: var(--fuente-titulo);
+    font-size: 3.6rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 35px;
+}
+
+
+/* ======================================
+   BOTONES
+====================================== */
+
+.btn {
+    display: inline-block;
+    background: var(--color-principal);
+    color: var(--color-blanco);
+
+    padding: 14px 35px;
+    border-radius: 6px;
+
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--color-acento);
+    color: var(--color-blanco);
+}
+
+
+/* ======================================
+   SECCIONES
+====================================== */
+
+section {
+    padding: 90px 0;
+}
+
+section h2 {
+    font-family: var(--fuente-titulo);
+    font-size: 2.5rem;
+    text-align: center;
+
+    margin-bottom: 20px;
+
+    color: var(--color-principal);
+}
+
+.descripcion {
+    max-width: 700px;
+    margin: 0 auto 45px;
+
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+
+/* ======================================
+   PRODUCTOS
+====================================== */
+
+#productos-destacados,
+.productos {
+    background: var(--color-blanco);
+    padding: 70px 5%;
+}
+
+.productos h2 {
+    margin-bottom: 40px;
+}
+
+
+/* Contenedor donde JavaScript agrega
+   las tarjetas de productos. */
+
+#productos-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: grid;
+
+    /* En pantallas grandes mostramos
+       cuatro productos por fila. */
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 30px;
+}
+
+
+/* ======================================
+   TARJETAS DE PRODUCTOS
+====================================== */
+
+.producto-card {
+    background: var(--color-blanco);
+
+    border-radius: 12px;
+    overflow: hidden;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.producto-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/* Imagen de cada producto.
+   Todas tienen la misma altura para
+   que las tarjetas queden parejas. */
+
+.producto-card img {
+    width: 100%;
+    height: 250px;
+
+    object-fit: cover;
+}
+
+
+/* Información del producto */
+
+.producto-card h3 {
+    margin: 20px 20px 10px;
+
+    color: var(--color-principal);
+
+    font-size: 1.2rem;
+    font-family: var(--fuente-titulo);
+}
+
+.producto-card p {
+    margin: 0 20px 20px;
+
+    font-size: 1.1rem;
+    font-weight: 600;
+
+    color: var(--color-texto);
+}
+
+
+/* Botón "Ver producto" */
+
+.producto-card a {
+    display: inline-block;
+
+    margin: 0 20px 25px;
+    padding: 10px 20px;
+
+    background: var(--color-principal);
+    color: var(--color-blanco);
+
+    border-radius: 6px;
+
+    font-weight: 500;
+
+    transition: background 0.3s ease;
+}
+
+.producto-card a:hover {
+    background: var(--color-acento);
+}
+
+
+/* ======================================
+   FOOTER
+====================================== */
+
+.footer {
+    background: var(--color-principal);
+    color: var(--color-blanco);
+
+    padding-top: 60px;
+}
+
+.footer-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 40px;
+}
+
+.footer h3 {
+    margin-bottom: 18px;
+}
+
+.footer ul li {
+    margin-bottom: 10px;
+}
+
+.footer a {
+    color: var(--color-blanco);
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: var(--color-acento);
+}
+
+.footer p {
+    margin-bottom: 10px;
+}
+
+
+/* Derechos de autor */
+
+.copyright {
+    margin-top: 50px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+    font-size: 0.9rem;
+}
+
+
+/* ======================================
+   RESPONSIVE
+   Adaptamos la página para tablets
+   y celulares.
+====================================== */
+
+/* Tablets */
+
+@media (max-width: 900px) {
+
+    #productos-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .menu ul {
+        gap: 20px;
+    }
+}
+
+
+/* Celulares */
+
+@media (max-width: 600px) {
+
+    .header .contenedor {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .menu ul {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        min-height: 100vh;
+    }
+
+    .hero-contenido {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    #productos-container {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+
+    section h2 {
+        font-size: 2rem;
+    }
+}
